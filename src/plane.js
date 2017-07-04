@@ -1,3 +1,3 @@
 var Plane = function() {
-  this.isAirborne = false;
+  this.onGround = true;
 };

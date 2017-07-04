@@ -1,10 +1,16 @@
 var Airport = function(capacity) {
   this.planes= [];
   this.capacity= capacity;
-  this.land= function(plane) {
+};
+
+Airport.prototype.land = function (plane) {
+  if (!plane.onGround) {
     this.planes.push(plane);
   };
 };
 
-
-// var airport = new Airport();
+Airport.prototype.takeOff = function (plane) {
+  if (plane.onGround) {
+    this.planes.pop(plane);
+  };
+};
