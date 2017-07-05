@@ -1,6 +1,6 @@
 describe("Airport", function() {
   var airport;
-  var plane;
+  var planeMock;
 
   beforeEach(function() {
     airport = new Airport(3);

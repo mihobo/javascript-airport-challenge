@@ -1,4 +1,4 @@
-var Airport = function(capacity) {
+function Airport(capacity) {
   this.planes= [];
   this.capacity= capacity;
 };
