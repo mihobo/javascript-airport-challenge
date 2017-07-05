@@ -1,25 +1,23 @@
 describe("Airport", function() {
   var airport;
   var plane;
-  
+
   beforeEach(function() {
-    airport = new Airport();
-    plane = new Plane();
-    spyOn(airport, 'planes');
-    airport.planes = [plane];
+    airport = new Airport(3);
+    planeMock = jasmine.createSpyObj('plane', ['isAirborne'])
   });
-  
+
   it ("should land a plane", function() {
-    spyOn(plane, 'onGround');
-    plane.onGround = false;
-    airport.land(plane);
-    expect(airport.planes.length).toEqual(2);
+    airport.land(planeMock);
+    expect(airport.planes.length).toEqual(1);
   });
-  
+
   it ("should allow a plane to take off", function() {
-    airport.takeOff(plane);
+    airport.planes.push(planeMock);
+    planeMock.isAirborne = false;
+    airport.takeOff(planeMock);
     expect(airport.planes.length).toEqual(0);
   });
-  
-  
+
+
 });
