@@ -3,7 +3,7 @@ describe("Airport", function() {
   var planeMock;
 
   beforeEach(function() {
-    airport = new Airport(3);
+    airport = new Airport(5);
     planeMock = jasmine.createSpyObj('plane', ['isAirborne'])
   });
 
@@ -19,5 +19,11 @@ describe("Airport", function() {
     expect(airport.planes.length).toEqual(0);
   });
 
+  it ("should raise an error when a plane tries to land at full capacity", function() {
+    for(var i = 0; i < 5; i++) {
+      airport.land(planeMock);
+    };
+    expect(function() { airport.checkCapacity(); }).toThrow(new Error("Nahhh"));
+  });
 
 });
